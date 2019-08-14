@@ -1,49 +1,57 @@
 {
   "name": "sofa-registry-node",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Node.js SDK for SOFARegistry",
   "main": "index.js",
   "files": [
-    "index.js",
-    "lib"
+    "lib",
+    "index.js"
   ],
   "scripts": {
     "autod": "autod",
-    "lint": "eslint lib test *.js",
-    "test": "npm run lint && egg-bin test",
+    "pkgfiles": "egg-bin pkgfiles --check",
+    "lint": "eslint . --ext .js",
+    "test": "tnpm run lint && tnpm run test-local",
     "test-local": "egg-bin test",
-    "cov": "egg-bin cov",
-    "pkgfiles": "egg-bin pkgfiles",
-    "ci": "egg-bin pkgfiles --check && npm run lint && npm run cov"
+    "cov": "TEST_TIMEOUT=10000 egg-bin cov",
+    "ci": "npm run autod -- --check && npm run pkgfiles && npm run lint && npm run cov"
+  },
+  "keywords": [
+    "Registry",
+    "node"
+  ],
+  "author": "killagu <killa123@126.com>",
+  "ci": {
+    "versions": "8, 10, 12"
+  },
+  "dependencies": {
+    "await-first": "^1.0.0",
+    "cluster-client": "^3.0.1",
+    "mz-modules": "^2.1.0",
+    "sdk-base": "^3.6.0",
+    "sofa-bolt-node": "^1.2.0",
+    "uuid": "^3.3.2"
+  },
+  "bugs": {
+    "url": "http://github.com/sofa/sofa-registry-node/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sofastack/sofa-registry-node.git"
+    "url": "git@github.com:sofa/sofa-registry-node.git"
   },
-  "keywords": [
-    "sofa-registry",
-    "sofastack"
-  ],
-  "author": "gxcsoccer <gxcsoccer@126.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/sofastack/sofa-registry-node/issues"
-  },
-  "homepage": "https://github.com/sofastack/sofa-registry-node#readme",
   "engines": {
     "node": ">= 8.0.0"
   },
-  "ci": {
-    "version": "8, 10, 12"
-  },
-  "dependencies": {
-
-  },
+  "homepage": "https://github.com/sofastack/sofa-registry-node#readme",
   "devDependencies": {
     "autod": "^3.1.0",
+    "await-event": "^2.1.0",
     "egg-bin": "^4.13.0",
-    "egg-ci": "^1.12.0",
-    "eslint": "^6.0.1",
-    "eslint-config-egg": "^7.4.1"
+    "egg-ci": "^1.13.0",
+    "eslint": "^6.1.0",
+    "eslint-config-egg": "^7.4.1",
+    "sinon": "^7.4.1",
+    "urllib": "^2.34.0",
+    "webstorm-disable-index": "^1.2.0"
   }
 }

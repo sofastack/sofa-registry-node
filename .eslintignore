@@ -3,3 +3,6 @@ coverage
 benchmark
 fixtures
 .vscode
+test/fixtures
+test/benchmark
+example

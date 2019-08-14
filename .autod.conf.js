@@ -1,4 +1,4 @@
-'ues strict';
+'use strict';
 
 module.exports = {
   write: true,
@@ -7,12 +7,14 @@ module.exports = {
   exclude: [
     'test/fixtures',
   ],
+  keep: [],
   devdep: [
     'autod',
     'egg-bin',
-    'egg-ci',
     'eslint',
     'eslint-config-egg',
+    'webstorm-disable-index',
+    'egg-ci'
   ],
-  keep: [],
+  semver: [],
 };

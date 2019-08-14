@@ -1,12 +1,22 @@
 sudo: false
-language: node_js
-node_js:
-  - '8'
-  - '10'
-  - '12'
+language: java
+env:
+  - NODE_VERSION=10
+jdk:
+  - openjdk8
+before_install:
+  - nvm install $NODE_VERSION
+  - mkdir registry-integration
+  - wget https://github.com/sofastack/sofa-registry/releases/download/v5.2.1/registry-integration.tgz
+  - tar -zxvf registry-integration.tgz -C registry-integration
+  - sh registry-integration/bin/startup.sh
+  - npm i npminstall -g
+  - java -version
 install:
-  - npm i npminstall && npminstall
+  - npminstall
+  - node test/healthcheck.js
 script:
   - npm run ci
 after_script:
   - npminstall codecov && codecov
+  - sh registry-integration/bin/shutdown.sh
