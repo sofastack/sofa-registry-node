@@ -1,6 +1,6 @@
 {
   "name": "sofa-registry-node",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Node.js SDK for SOFARegistry",
   "main": "index.js",
   "files": [
